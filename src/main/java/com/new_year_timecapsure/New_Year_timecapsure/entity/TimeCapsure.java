@@ -9,11 +9,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import org.springframework.data.annotation.CreatedDate;
+import lombok.Getter;
 
-import java.sql.Timestamp;
+import java.time.LocalDate;
 
 @Entity
+@Getter
 public class TimeCapsure extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,11 +31,9 @@ public class TimeCapsure extends BaseEntity{
     @Column
     private String timeCapsureContents;
 
-    @CreatedDate
-    private Timestamp timeCapsureStart;
+    private LocalDate timeCapsureStart;
 
-    @CreatedDate
-    private Timestamp timeCapsureEnd;
+    private LocalDate timeCapsureEnd;
 
     @Column
     private String timeCapsureCategory;
