@@ -1,6 +1,7 @@
 package com.new_year_timecapsure.New_Year_timecapsure.service;
 
 import com.new_year_timecapsure.New_Year_timecapsure.dto.CreateTimeCapsureRequestDTO;
+import com.new_year_timecapsure.New_Year_timecapsure.dto.CreateTimeCapsureResponseDTO;
 import com.new_year_timecapsure.New_Year_timecapsure.dto.FindTimeCapsureDTO;
 import com.new_year_timecapsure.New_Year_timecapsure.dto.FindTimeCapsureDetailDTO;
 import com.new_year_timecapsure.New_Year_timecapsure.dto.FindTitleByCategoryDTO;
@@ -97,7 +98,7 @@ public class TimeCapsureService {
         return new FindTitleByCategoryDTO(questionByCategory.get(index).getQuestion());
     }
 
-    public Boolean createTimeCapsure(CreateTimeCapsureRequestDTO createTimeCapsureRequestDTO) {
+    public CreateTimeCapsureResponseDTO createTimeCapsure(CreateTimeCapsureRequestDTO createTimeCapsureRequestDTO) {
 
         User user = userRepository.findById(1L).get();
         int randomTermMonth = (int) (Math.random() * 12);
@@ -112,7 +113,7 @@ public class TimeCapsureService {
                 .isPrivate(createTimeCapsureRequestDTO.getIsPrivate())
                 .build();
         timeCapsureRepository.save(timeCapsure);
-        return true;
+        return new CreateTimeCapsureResponseDTO(true);
     }
 }
 

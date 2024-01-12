@@ -7,6 +7,7 @@ import com.new_year_timecapsure.New_Year_timecapsure.dto.OtherTimeCapsureDTO;
 import com.new_year_timecapsure.New_Year_timecapsure.service.TimeCapsureService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +21,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/timecapsure")
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class TimeCapsureController {
     private final TimeCapsureService timeCapsureService;
 
