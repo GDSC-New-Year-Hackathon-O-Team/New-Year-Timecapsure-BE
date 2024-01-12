@@ -8,34 +8,33 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import org.springframework.data.annotation.CreatedDate;
 
-import java.math.BigInteger;
 import java.sql.Timestamp;
 
 @Entity
-public class Timecapsure {
+public class TimeCapsure extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long timecapsureId;
+    private Long timeCapsureId;
 
     @ManyToOne
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private User user;
 
     @Column
-    private String timecapsureTitle;
+    private String timeCapsureTitle;
 
     @Column
-    private String timecapsureContents;
+    private String timeCapsureContents;
 
     @CreatedDate
-    private Timestamp timecapsureStart;
+    private Timestamp timeCapsureStart;
 
     @CreatedDate
-    private Timestamp timecapsureEnd;
+    private Timestamp timeCapsureEnd;
 
     @Column
-    private String timecapsureCategory;
+    private String timeCapsureCategory;
 
     @Column
-    private Boolean isPrivated;
+    private Boolean isPrivate;
 }
