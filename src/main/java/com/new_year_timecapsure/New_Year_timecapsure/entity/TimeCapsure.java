@@ -1,6 +1,9 @@
 package com.new_year_timecapsure.New_Year_timecapsure.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.UpdateTimestamp;
 import jakarta.persistence.Column;
@@ -17,6 +20,7 @@ import java.time.LocalDate;
 @Entity
 @Getter
 @ToString
+@NoArgsConstructor
 public class TimeCapsure extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,4 +46,15 @@ public class TimeCapsure extends BaseEntity{
 
     @Column
     private Boolean isPrivate;
+
+    @Builder
+    public TimeCapsure(User user, String timeCapsureTitle, String timeCapsureContents, LocalDate timeCapsureStart, LocalDate timeCapsureEnd, String timeCapsureCategory, Boolean isPrivate) {
+        this.user = user;
+        this.timeCapsureTitle = timeCapsureTitle;
+        this.timeCapsureContents = timeCapsureContents;
+        this.timeCapsureStart = timeCapsureStart;
+        this.timeCapsureEnd = timeCapsureEnd;
+        this.timeCapsureCategory = timeCapsureCategory;
+        this.isPrivate = isPrivate;
+    }
 }
