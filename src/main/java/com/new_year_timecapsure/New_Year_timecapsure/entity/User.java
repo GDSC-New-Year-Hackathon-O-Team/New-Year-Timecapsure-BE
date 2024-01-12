@@ -8,12 +8,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.math.BigInteger;
 
 @Entity
 @NoArgsConstructor
 @Getter
+@ToString
 public class User extends BaseEntity{
 
     @Id

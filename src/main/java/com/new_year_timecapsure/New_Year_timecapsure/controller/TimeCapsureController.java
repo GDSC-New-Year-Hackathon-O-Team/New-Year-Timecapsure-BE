@@ -2,6 +2,7 @@ package com.new_year_timecapsure.New_Year_timecapsure.controller;
 
 import com.new_year_timecapsure.New_Year_timecapsure.dto.FindTimeCapsureDTO;
 import com.new_year_timecapsure.New_Year_timecapsure.dto.FindTimeCapsureDetailDTO;
+import com.new_year_timecapsure.New_Year_timecapsure.dto.OtherTimeCapsureDTO;
 import com.new_year_timecapsure.New_Year_timecapsure.service.TimeCapsureService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -46,8 +47,9 @@ public class TimeCapsureController {
     }
 
     //TODO: 김한주
-    @GetMapping("/{userID}/others")
-    public ResponseEntity getOtherTimecapsures(){
-        return ResponseEntity.ok().build();
+    @GetMapping("/{timecapsureId}/others")
+    public ResponseEntity getOtherTimecapsures(@PathVariable("timecapsureId") Long timecapsureId) {
+        List<OtherTimeCapsureDTO> othersTimeCapsures = timeCapsureService.findOthersTimeCapsures(timecapsureId);
+        return ResponseEntity.ok(othersTimeCapsures);
     }
 }

@@ -2,6 +2,7 @@ package com.new_year_timecapsure.New_Year_timecapsure.service;
 
 import com.new_year_timecapsure.New_Year_timecapsure.dto.FindTimeCapsureDTO;
 import com.new_year_timecapsure.New_Year_timecapsure.dto.FindTimeCapsureDetailDTO;
+import com.new_year_timecapsure.New_Year_timecapsure.dto.OtherTimeCapsureDTO;
 import com.new_year_timecapsure.New_Year_timecapsure.entity.TimeCapsure;
 import com.new_year_timecapsure.New_Year_timecapsure.entity.User;
 import com.new_year_timecapsure.New_Year_timecapsure.repository.TimeCapsureRepository;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -55,6 +57,31 @@ public class TimeCapsureService {
        return FindTimeCapsureDetailDTO.from(timeCapsure);
 
 
+    }
+
+    public List<OtherTimeCapsureDTO> findOthersTimeCapsures(Long timecapsureId) {
+        List<OtherTimeCapsureDTO> otherTimeCapsureDTOs = new ArrayList<>();
+
+        TimeCapsure timeCapsure = timeCapsureRepository.findById(timecapsureId)
+                .orElseThrow(() -> new IllegalArgumentException("잘못된 타임캡슐 ID입니다."));
+        User user = timeCapsure.getUser();
+        List<TimeCapsure> allTimeCapsure = timeCapsureRepository.findAll();
+        for (TimeCapsure tc : allTimeCapsure) {
+            System.out.println(tc.toString());
+            System.out.println(user);
+            if (tc.getUser().getUserId() == user.getUserId())
+                continue;
+
+            if(!tc.getTimeCapsureTitle().equals(timeCapsure.getTimeCapsureTitle()))
+                continue;
+            if(tc.getIsPrivate())
+                continue;
+            otherTimeCapsureDTOs.add(OtherTimeCapsureDTO.builder()
+                    .id(tc.getTimeCapsureId())
+                    .contents(tc.getTimeCapsureContents().trim())
+                    .build());
+        }
+        return otherTimeCapsureDTOs;
     }
 }
 

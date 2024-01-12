@@ -1,6 +1,7 @@
 package com.new_year_timecapsure.New_Year_timecapsure.entity;
 
 import jakarta.persistence.*;
+import lombok.ToString;
 import org.hibernate.annotations.UpdateTimestamp;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,6 +16,7 @@ import java.time.LocalDate;
 
 @Entity
 @Getter
+@ToString
 public class TimeCapsure extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
