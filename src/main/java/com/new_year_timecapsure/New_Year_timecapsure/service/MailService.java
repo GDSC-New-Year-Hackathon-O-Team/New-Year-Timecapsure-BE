@@ -32,7 +32,7 @@ public class MailService {
         System.out.println("SchedulerTest");
     }*/
 
-    @Scheduled(cron = "0/600 * * * * *")
+//    @Scheduled(cron = "0/600 * * * * *")
     public void sendMail(){
         ArrayList<String> toUserList = new ArrayList<>();
 
