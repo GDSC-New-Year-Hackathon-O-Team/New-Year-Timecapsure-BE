@@ -4,9 +4,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import org.hibernate.annotations.UpdateTimestamp;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.Id;
 
 import java.math.BigInteger;
 import java.sql.Timestamp;
@@ -17,9 +17,9 @@ public class Timecapsure {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long timecapsureId;
 
-    @Id
+    @ManyToOne
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    private User user;
 
     @Column
     private String timecapsureTitle;
