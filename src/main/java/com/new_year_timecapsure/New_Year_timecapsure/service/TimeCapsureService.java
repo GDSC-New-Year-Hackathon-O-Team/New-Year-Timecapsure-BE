@@ -1,5 +1,6 @@
 package com.new_year_timecapsure.New_Year_timecapsure.service;
 
+import com.new_year_timecapsure.New_Year_timecapsure.dto.CategoryTotalDTO;
 import com.new_year_timecapsure.New_Year_timecapsure.dto.CreateTimeCapsureRequestDTO;
 import com.new_year_timecapsure.New_Year_timecapsure.dto.CreateTimeCapsureResponseDTO;
 import com.new_year_timecapsure.New_Year_timecapsure.dto.FindTimeCapsureDTO;
@@ -114,6 +115,20 @@ public class TimeCapsureService {
                 .build();
         timeCapsureRepository.save(timeCapsure);
         return new CreateTimeCapsureResponseDTO(true);
+    }
+
+    public List<CategoryTotalDTO> getCategoryTotal() {
+        List<CategoryTotalDTO> categoryTotalDTOS = new ArrayList<>();
+        Long loveCnt = timeCapsureRepository.countByTimeCapsureCategory("사랑");
+        Long healthCnt = timeCapsureRepository.countByTimeCapsureCategory("건강");
+        Long promiseCnt = timeCapsureRepository.countByTimeCapsureCategory("다짐");
+        Long envCnt = timeCapsureRepository.countByTimeCapsureCategory("환경보호");
+        categoryTotalDTOS.add(new CategoryTotalDTO("사랑", loveCnt));
+        categoryTotalDTOS.add(new CategoryTotalDTO("건강", healthCnt));
+        categoryTotalDTOS.add(new CategoryTotalDTO("다짐", promiseCnt));
+        categoryTotalDTOS.add(new CategoryTotalDTO("환경보호", envCnt));
+
+        return categoryTotalDTOS;
     }
 }
 

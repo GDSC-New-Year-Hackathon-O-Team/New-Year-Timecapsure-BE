@@ -11,4 +11,6 @@ import java.util.List;
 @Repository
 public interface TimeCapsureRepository extends JpaRepository<TimeCapsure,Long> {
     List<TimeCapsure> findTimeCapsureByUser(User user);
+    Long countByTimeCapsureCategory(String category);
+
 }
