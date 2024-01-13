@@ -32,12 +32,11 @@ public class MailService {
         System.out.println("SchedulerTest");
     }*/
 
-//    @Scheduled(cron = "0/600 * * * * *")
+    @Scheduled(cron = "0/600 * * * * *")
     public void sendMail(){
         ArrayList<String> toUserList = new ArrayList<>();
 
         toUserList.add("newyeartimecapsure@gmail.com");
-//        toUserList.add("bwkim2908@gmail.com");
 
         int toUserSize = toUserList.size();
 
@@ -45,9 +44,9 @@ public class MailService {
 
         simpleMessage.setTo((String[]) toUserList.toArray(new String[toUserSize]));
 
-        simpleMessage.setSubject("당신의 NewYear-Timecapsure을 확인해보세요~!");
+        simpleMessage.setSubject("당신의 New-Year TimeCapsule을 확인해보세요~!");
 
-        simpleMessage.setText("타임캡슐의 오픈 당일입니다!");
+        simpleMessage.setText("2024.01.13[토] 타임캡슐이 공개되었습니다!\nNew-Year TimeCapsule에 방문하여 과거에 작성한 캡슐을 열어보세요");
 
         javaMailSender.send(simpleMessage);
     }
